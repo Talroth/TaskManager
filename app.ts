@@ -1,2 +1,26 @@
-var msg = 'Hello World2';
-console.log(msg);
+import * as express from "express";
+import * as bodyParser from "body-parser";
+import { Routes } from "./routes";
+
+class App {
+
+    public app: express.Application;
+    public routePrv: Routes = new Routes();     
+
+
+    constructor() {
+        this.app = express();
+        this.config();   
+        this.routePrv.routes(this.app);
+    }
+
+    private config(): void{
+        // support application/json type postnp data
+        this.app.use(bodyParser.json());
+        //support application/x-www-form-urlencoded post data
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+    }
+
+}
+
+export default new App().app;
