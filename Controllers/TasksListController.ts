@@ -6,14 +6,12 @@ const tasksList : TaskEntity[] = [{"ID": 1, "Date" : new Date(11, 12, 2019), "Su
 
 
  export class TasksListController {
-
-    private taskListControllerLogic : TasksListControllerLogic = new TasksListControllerLogic();
     // public GetTasksList(req: Request, res:Response) {
     //     var task = tasksList.find(i => i.ID == req.params.ID);
     // }
 
-    public GetTasksList(req: Request, res:Response) : void {  
-        let tasksListAfterProcess = this.taskListControllerLogic.GetTasksList(tasksList);
+    GetTasksList(req: Request, res:Response) : void {  
+        let tasksListAfterProcess = TasksListControllerLogic.GetTasksList(tasksList);
         res.json(tasksListAfterProcess);
     }
 }

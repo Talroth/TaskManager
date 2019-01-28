@@ -4,7 +4,7 @@ var guid_typescript_1 = require("guid-typescript");
 var TasksListControllerLogic = (function () {
     function TasksListControllerLogic() {
     }
-    TasksListControllerLogic.prototype.GetTasksList = function (tasksList) {
+    TasksListControllerLogic.GetTasksList = function (tasksList) {
         tasksList.forEach(function (e) { e.Guid = guid_typescript_1.Guid.create().toString(); });
         return tasksList;
     };
