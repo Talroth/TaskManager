@@ -3,12 +3,15 @@ exports.__esModule = true;
 var express = require("express");
 var bodyParser = require("body-parser");
 var TasksListController_1 = require("./Controllers/TasksListController");
+var ViewRouter_1 = require("./Views/ViewRouter");
 var App = (function () {
     function App() {
         this.tasksListController = new TasksListController_1.TasksListController();
+        this.viewRouter = new ViewRouter_1.ViewRouter();
         this.app = express();
         this.config();
         this.tasksListController.routes(this.app);
+        this.viewRouter.Route(this.app);
     }
     App.prototype.config = function () {
         this.app.use(bodyParser.json());
