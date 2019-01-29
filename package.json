@@ -1,11 +1,12 @@
 {
   "name": "taskmanager-1",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "dependencies": {
     "@types/body-parser": "^1.17.0",
     "@types/express": "^4.16.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "express": "^4.16.4",
     "guid-typescript": "^1.0.9",
     "react": "^16.7.0"
@@ -26,5 +27,7 @@
   "bugs": {
     "url": "https://github.com/Talroth/TaskManager/issues"
   },
-  "homepage": "https://github.com/Talroth/TaskManager#readme"
+  "homepage": "https://github.com/Talroth/TaskManager#readme",
+  "keywords": [],
+  "description": ""
 }
