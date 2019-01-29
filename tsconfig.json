@@ -5,7 +5,9 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "allowJs": true
+        "target": "es5",
+        "jsx":"react"
+        
     },
     "include": [
         "*.ts"

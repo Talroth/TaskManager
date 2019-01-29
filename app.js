@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var express = require("express");
 var bodyParser = require("body-parser");
 var TasksListController_1 = require("./Controllers/TasksListController");
@@ -19,5 +19,5 @@ var App = (function () {
     };
     return App;
 }());
-exports["default"] = new App().app;
+exports.default = new App().app;
 //# sourceMappingURL=app.js.map

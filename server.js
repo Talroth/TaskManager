@@ -1,8 +1,8 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = require("./app");
 var PORT = 3000;
-app_1["default"].listen(PORT, function () {
+app_1.default.listen(PORT, function () {
     console.log('Express server listening on port: ' + PORT);
 });
 //# sourceMappingURL=server.js.map

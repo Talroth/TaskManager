@@ -1,5 +1,5 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var guid_typescript_1 = require("guid-typescript");
 var TasksListDataLogic_1 = require("../DataLogic/TasksListData/TasksListDataLogic");
 var TasksListControllerLogic = (function () {
