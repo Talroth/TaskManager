@@ -2,16 +2,19 @@ import { Request, Response } from 'express';
 import { TasksListControllerLogic } from '../ControllersLogic/TasksListControllerLogic';
 import { TaskEntity } from '../Entities/Task';
 
-const tasksList : TaskEntity[] = [{"ID": 1, "Date" : new Date(11, 12, 2019), "Subject" : "Call Doc", "Guid" : ""}, {"ID": 2, "Date" : new Date(11, 10, 2019), "Subject" : "Call Doc3", "Guid" : ""}];
+
+// TODO: should be include id for get tasks list (userid)
+
 
 
  export class TasksListController {
     // public GetTasksList(req: Request, res:Response) {
     //     var task = tasksList.find(i => i.ID == req.params.ID);
     // }
-
-    GetTasksList(req: Request, res:Response) : void {  
-        let tasksListAfterProcess = TasksListControllerLogic.GetTasksList(tasksList);
-        res.json(tasksListAfterProcess);
+    public routes(app: any) : void {
+        app.route('/GetTasksList').get((req: Request, res:Response) => {            
+            let tasksListAfterProcess = TasksListControllerLogic.GetTasksList();
+            res.json(tasksListAfterProcess);
+        });
     }
 }

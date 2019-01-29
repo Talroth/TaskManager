@@ -4,3 +4,4 @@ export class TaskEntity {
     public Subject : string;
     public Guid : string;
 }
+

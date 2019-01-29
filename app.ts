@@ -1,17 +1,19 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { Routes } from "./routes";
+import { TasksListController } from "./Controllers/TasksListController";
 
 class App {
 
-    public app: express.Application;
-    public routePrv: Routes = new Routes();     
+    public app: express.Application;  
+    public tasksListController: TasksListController = new TasksListController(); 
 
 
     constructor() {
         this.app = express();
         this.config();   
-        this.routePrv.routes(this.app);
+        
+        // List of all cpntrollers:
+        this.tasksListController.routes(this.app);
     }
 
     private config(): void{
