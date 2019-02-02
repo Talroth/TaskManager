@@ -44,5 +44,6 @@
   },
   "homepage": "https://github.com/Talroth/TaskManager#readme",
   "keywords": [],
-  "description": ""
+  "description": "",
+  "proxy": "http://localhost:3000"
 }

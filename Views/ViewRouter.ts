@@ -18,7 +18,7 @@ export class ViewRouter
         // app.use('/t',express.static(cc));
 
         app.route('/').get( (req : express.Request,res : express.Response) =>{
-            res.sendFile(path.join(__dirname+'/Views/index.html'));
+            res.sendFile(path.join(__dirname+'/index.html'));
         });
     }
 }

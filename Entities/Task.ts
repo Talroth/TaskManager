@@ -1,7 +1,7 @@
-export class TaskEntity {
-    public ID : number;
-    public Date : Date;
-    public Subject : string;
-    public Guid : string;
+export type TaskEntity = {
+     ID : number;
+     Date : Date;
+     Subject : string;
+     Guid : string;
 }
 

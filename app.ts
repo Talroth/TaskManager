@@ -16,7 +16,7 @@ class App {
         this.config();   
 
         // List of all cpntrollers:
-
+        this.app.use(express.static(__dirname + '/Views'));
         this.tasksListController.routes(this.app);
         this.viewRouter.Route(this.app);
 

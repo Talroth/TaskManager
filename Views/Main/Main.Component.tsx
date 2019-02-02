@@ -1,11 +1,16 @@
 import * as React from 'react';
-import { Route } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import { TasksListController } from '../../Controllers/TasksListController';
-import * as a from '.././TasksList/TasksList.Component';
+import {TasksList} from '../TasksList/TasksList.Component';
+
 
  class Main extends React.Component {
+    
     render() {
-        return <switch><Route exact path='/TasksList' component={a}><h1>Hello from  and !</h1></Route></switch>;
+
+         return <div>HHHHH<switch><Route exact path='/TasksListView' component={TasksList}></Route></switch></div>;
+         //return <Redirect to="/TasksListView" />
+        //return <h1>Bla bla</h1>
     }
   }
 
