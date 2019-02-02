@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var p = require("path");
+var path = require("path");
 var ViewRouter = (function () {
     function ViewRouter() {
     }
     ViewRouter.prototype.Route = function (app) {
-        var cc = p.join(__dirname, 'TasksList');
-        app.use(express.static(cc));
+        app.route('/').get(function (req, res) {
+            res.sendFile(path.join(__dirname + '/Views/index.html'));
+        });
     };
     return ViewRouter;
 }());

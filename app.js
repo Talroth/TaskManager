@@ -4,12 +4,16 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var TasksListController_1 = require("./Controllers/TasksListController");
 var ViewRouter_1 = require("./Views/ViewRouter");
+var path = require("path");
 var App = (function () {
     function App() {
         this.tasksListController = new TasksListController_1.TasksListController();
         this.viewRouter = new ViewRouter_1.ViewRouter();
         this.app = express();
         this.config();
+        this.app.get('*', function (req, res) {
+            res.sendFile(path.join(__dirname + '/Views/index.html'));
+        });
         this.tasksListController.routes(this.app);
         this.viewRouter.Route(this.app);
     }

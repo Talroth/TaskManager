@@ -2,6 +2,7 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import { TasksListController } from "./Controllers/TasksListController";
 import {ViewRouter} from "./Views/ViewRouter";
+import * as path from 'path';
 
 class App {
 
@@ -15,8 +16,10 @@ class App {
         this.config();   
 
         // List of all cpntrollers:
+
         this.tasksListController.routes(this.app);
         this.viewRouter.Route(this.app);
+
     }
 
     private config(): void{
