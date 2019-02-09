@@ -12,41 +12,46 @@
 // }
 import {TaskEntity} from '../../Entities/Task';
 
-export class TasksList extends React.Component{
+export class TasksList extends React.Component<{}, {K: TaskEntity[]}> {
 
-  public lstVal : TaskEntity[]; 
+  constructor(prpo : {})
+  {
+    super(prpo);
+    this.state = {K: []};
+  }
 
-    // Initialize the state
-    // constructor(props){
-    //   super(props);
-     
-    // }
 
       // Fetch the list on first mount
   componentDidMount() {
-    this.getList();
-  }
 
-    // Retrieves the list of items from the Express app
-    getList = () => {
-      fetch('/GetTasksList')
-      .then(res => res.json())
-      .then(list => this.lstVal)
+    var myRequest = new Request('/GetTasksList'); // Controller api
+
+    fetch(myRequest)
+      .then(response => response.json())
+      .then(data => {
+        
+
+        this.setState({K : data});
+
+      })
+
     }
+
 
     render() {
       return (
       <div className="App">
       <h1>List of Items</h1>
       {/* Check to see if any items are found*/}
-      {this.lstVal.length? (
+      {this.state.K.length > 0? (
         <div>
           {/* Render the list of items */}
-          {this.lstVal.map((item) => {
+          {this.state.K.map((item) => {
             return(
-              <div>
-                {item}
-              </div>
+              <ul>
+                <li>{item.ID}</li>
+                <li>{item.Guid}</li>
+              </ul>
             );
           })}
         </div>

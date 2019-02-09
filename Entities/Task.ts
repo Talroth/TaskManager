@@ -1,4 +1,4 @@
-export type TaskEntity = {
+export interface TaskEntity  {
      ID : number;
      Date : Date;
      Subject : string;
