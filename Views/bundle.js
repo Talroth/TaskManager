@@ -160,25 +160,44 @@ var TasksList = (function (_super) {
     __extends(TasksList, _super);
     function TasksList(prpo) {
         var _this = _super.call(this, prpo) || this;
-        _this.state = { K: [] };
+        _this.originalList = [];
+        _this.state = { taskListState: [] };
+        _this.searchText = _this.searchText.bind(_this);
         return _this;
     }
+    TasksList.prototype.searchText = function (e) {
+        var searchWord = e.target.value;
+        var filterd = this.originalList.filter(function (item) { return item.Subject.toLowerCase().includes(searchWord); });
+        this.setState({ 'taskListState': filterd });
+    };
     TasksList.prototype.componentDidMount = function () {
         var _this = this;
         var myRequest = new Request('/GetTasksList');
         fetch(myRequest)
             .then(function (response) { return response.json(); })
             .then(function (data) {
-            _this.setState({ K: data });
+            _this.setState({ taskListState: data });
+            _this.originalList = data;
         });
     };
     TasksList.prototype.render = function () {
-        return (React.createElement("div", { className: "App" },
+        return (React.createElement("div", { className: "App", onChange: this.searchText },
+            React.createElement("input", { type: "text" }),
             React.createElement("h1", null, "List of Items"),
-            this.state.K.length > 0 ? (React.createElement("div", null, this.state.K.map(function (item) {
-                return (React.createElement("ul", null,
-                    React.createElement("li", null, item.ID),
-                    React.createElement("li", null, item.Guid)));
+            this.state.taskListState.length > 0 ? (React.createElement("div", null, this.state.taskListState.map(function (item) {
+                return (React.createElement("ul", { key: item.ID },
+                    React.createElement("li", null,
+                        "ID: ",
+                        item.ID),
+                    React.createElement("li", null,
+                        "Guid: ",
+                        item.Guid),
+                    React.createElement("li", null,
+                        "Date: ",
+                        item.Date),
+                    React.createElement("li", null,
+                        "Subject: ",
+                        item.Subject)));
             }))) : (React.createElement("div", null,
                 React.createElement("h2", null, "No List Items Found")))));
     };

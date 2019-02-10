@@ -12,14 +12,22 @@
 // }
 import {TaskEntity} from '../../Entities/Task';
 
-export class TasksList extends React.Component<{}, {K: TaskEntity[]}> {
+export class TasksList extends React.Component<{}, {taskListState: TaskEntity[]}> {
+
+  private originalList : TaskEntity[] = [];
 
   constructor(prpo : {})
   {
     super(prpo);
-    this.state = {K: []};
+    this.state = {taskListState: []};
+    this.searchText = this.searchText.bind(this);
   }
 
+  searchText(e : any){
+    let searchWord : string = e.target.value as string;
+    let filterd = this.originalList.filter(item => item.Subject.toLowerCase().includes(searchWord));
+    this.setState({'taskListState' : filterd});
+  }
 
       // Fetch the list on first mount
   componentDidMount() {
@@ -31,7 +39,8 @@ export class TasksList extends React.Component<{}, {K: TaskEntity[]}> {
       .then(data => {
         
 
-        this.setState({K : data});
+        this.setState({taskListState : data});
+        this.originalList = data;
 
       })
 
@@ -40,17 +49,20 @@ export class TasksList extends React.Component<{}, {K: TaskEntity[]}> {
 
     render() {
       return (
-      <div className="App">
+      <div className="App" onChange={this.searchText}>
+      <input type="text" />
       <h1>List of Items</h1>
       {/* Check to see if any items are found*/}
-      {this.state.K.length > 0? (
+      {this.state.taskListState.length > 0? (
         <div>
           {/* Render the list of items */}
-          {this.state.K.map((item) => {
+          {this.state.taskListState.map((item) => {
             return(
-              <ul>
-                <li>{item.ID}</li>
-                <li>{item.Guid}</li>
+              <ul key={item.ID}>
+                <li>ID: {item.ID}</li>
+                <li>Guid: {item.Guid}</li>
+                <li>Date: {item.Date}</li>
+                <li>Subject: {item.Subject}</li>
               </ul>
             );
           })}

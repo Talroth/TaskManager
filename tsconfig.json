@@ -6,7 +6,8 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "target": "es5",
-        "jsx":"react"
+        "jsx":"react",
+        "lib":["es6", "dom", "es2017"]
         
     },
     "include": [
